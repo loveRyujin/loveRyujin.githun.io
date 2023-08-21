@@ -49,6 +49,28 @@
     
     
     <entry>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
+      
+        <content type="html"><![CDATA[<h3 id="一、个人简介"><a href="#一、个人简介" class="headerlink" title="一、个人简介"></a>一、个人简介</h3><p>性别男，03在读大学生,爱好打篮球、乒乓球，有一点点追星（kpop）<br>目前主攻C++技术栈<br>梦想成为高性能算法工程师（虽然很遥远😂） 希望了解一些计算机底层的技术</p><h3 id="二、建站目的"><a href="#二、建站目的" class="headerlink" title="二、建站目的"></a>二、建站目的</h3><p>记录一下日常生活和学习过程<br>保存生活的点点滴滴，日子才更有盼头嘛😁</p>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title></title>
       <link href="/css/custom.css"/>
       <url>/css/custom.css</url>
@@ -60,11 +82,11 @@
     
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title></title>
+      <link href="/css/rightmenu.css"/>
+      <url>/css/rightmenu.css</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[/* 右键菜单 */#rightMenu {    display: none;    position: fixed;    width: 160px;    height: fit-content;    top: 10%;    left: 10%;      /* 菜单面板背景色 */    background-color: var(--card-bg);      /* 菜单面板文字颜色 */    border: 1px solid var(--font-color);    border-radius: 8px;    z-index: 100;  }  #rightMenu .rightMenu-group {    padding: 7px 6px;  }  #rightMenu .rightMenu-group:not(:nth-last-child(1)) {    border-bottom: 1px solid var(--font-color);  }  #rightMenu .rightMenu-group.rightMenu-small {    display: flex;    justify-content: space-between;  }  #rightMenu .rightMenu-group .rightMenu-item {    height: 30px;    line-height: 30px;    border-radius: 8px;    transition: 0.3s;    color: var(--font-color);  }  #rightMenu .rightMenu-group.rightMenu-line .rightMenu-item {    display: flex;    height: 40px;    line-height: 40px;    padding: 0 4px;  }  #rightMenu .rightMenu-group .rightMenu-item:hover {      /* 鼠标悬浮选项颜色 */    background-color: var(--text-bg-hover);  }  #rightMenu .rightMenu-group .rightMenu-item i {    display: inline-block;    text-align: center;    line-height: 30px;    width: 30px;    height: 30px;    padding: 0 5px;  }  #rightMenu .rightMenu-group .rightMenu-item span {    line-height: 30px;  }    #rightMenu .rightMenu-group.rightMenu-line .rightMenu-item * {    height: 40px;    line-height: 40px;  }  .rightMenu-group.hide {    display: none;  }]]></content>
       
     </entry>
     
@@ -105,21 +127,10 @@
     
     <entry>
       <title></title>
-      <link href="/css/rightmenu.css"/>
-      <url>/css/rightmenu.css</url>
+      <link href="/js/fps.js"/>
+      <url>/js/fps.js</url>
       
-        <content type="html"><![CDATA[/* 右键菜单 */#rightMenu {    display: none;    position: fixed;    width: 160px;    height: fit-content;    top: 10%;    left: 10%;      /* 菜单面板背景色 */    background-color: var(--card-bg);      /* 菜单面板文字颜色 */    border: 1px solid var(--font-color);    border-radius: 8px;    z-index: 100;  }  #rightMenu .rightMenu-group {    padding: 7px 6px;  }  #rightMenu .rightMenu-group:not(:nth-last-child(1)) {    border-bottom: 1px solid var(--font-color);  }  #rightMenu .rightMenu-group.rightMenu-small {    display: flex;    justify-content: space-between;  }  #rightMenu .rightMenu-group .rightMenu-item {    height: 30px;    line-height: 30px;    border-radius: 8px;    transition: 0.3s;    color: var(--font-color);  }  #rightMenu .rightMenu-group.rightMenu-line .rightMenu-item {    display: flex;    height: 40px;    line-height: 40px;    padding: 0 4px;  }  #rightMenu .rightMenu-group .rightMenu-item:hover {      /* 鼠标悬浮选项颜色 */    background-color: var(--text-bg-hover);  }  #rightMenu .rightMenu-group .rightMenu-item i {    display: inline-block;    text-align: center;    line-height: 30px;    width: 30px;    height: 30px;    padding: 0 5px;  }  #rightMenu .rightMenu-group .rightMenu-item span {    line-height: 30px;  }    #rightMenu .rightMenu-group.rightMenu-line .rightMenu-item * {    height: 40px;    line-height: 40px;  }  .rightMenu-group.hide {    display: none;  }]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>关于</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[if (window.localStorage.getItem("fpson") == undefined || window.localStorage.getItem("fpson") == "1") {    var rAF = function () {        return (            window.requestAnimationFrame ||            window.webkitRequestAnimationFrame ||            function (callback) {                window.setTimeout(callback, 1000 / 60);            }        );    }();    var frame = 0;    var allFrameCount = 0;    var lastTime = Date.now();    var lastFameTime = Date.now();    var loop = function () {        var now = Date.now();        var fs = (now - lastFameTime);        var fps = Math.round(1000 / fs);        lastFameTime = now;        // 不置 0，在动画的开头及结尾记录此值的差值算出 FPS        allFrameCount++;        frame++;        if (now > 1000 + lastTime) {            var fps = Math.round((frame * 1000) / (now - lastTime));            if (fps <= 5) {                var kd = `<span style="color:#bd0000">卡成ppt🤢</span>`            } else if (fps <= 15) {                var kd = `<span style="color:red">电竞级帧率😖</span>`            } else if (fps <= 25) {                var kd = `<span style="color:orange">有点难受😨</span>`            } else if (fps < 35) {                var kd = `<span style="color:#9338e6">不太流畅🙄</span>`            } else if (fps <= 45) {                var kd = `<span style="color:#08b7e4">还不错哦😁</span>`            } else {                var kd = `<span style="color:#39c5bb">十分流畅🤣</span>`            }            document.getElementById("fps").innerHTML = `FPS:${fps} ${kd}`;            frame = 0;            lastTime = now;        };        rAF(loop);    }    loop();} else {    document.getElementById("fps").style = "display:none!important"}]]></content>
       
     </entry>
     
@@ -138,39 +149,6 @@
     
     <entry>
       <title></title>
-      <link href="/js/newYear.js"/>
-      <url>/js/newYear.js</url>
-      
-        <content type="html"><![CDATA[let newYearTimer = null;var newYear = () => {    clearTimeout(newYearTimer);    if (!document.querySelector('#newYear')) return;    // 新年时间戳 and 星期对象    let newYear = new Date('2024-01-22 00:00:00').getTime() / 1000,        week = { 0: '周日', 1: '周一', 2: '周二', 3: '周三', 4: '周四', 5: '周五', 6: '周六' }    time();    // 补零函数    function nol(h) { return h > 9 ? h : '0' + h; };    function time() {        // 现在 时间对象        let now = new Date();        // 右下角 今天        document.querySelector('#newYear .today').innerHTML = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate() + ' ' + week[now.getDay()]        // 现在与新年相差秒数        let second = newYear - Math.round(now.getTime() / 1000);        // 小于0则表示已经过年        if (second < 0) {            document.querySelector('#newYear .title').innerHTML = 'Happy New Year!';            document.querySelector('#newYear .newYear-time').innerHTML = '<span class="happyNewYear">新年快乐</p>';        } else {            // 大于0则还未过年            document.querySelector('#newYear .title').innerHTML = '距离2023年春节：'            // 大于一天则直接渲染天数            if (second > 86400) {                document.querySelector('#newYear .newYear-time').innerHTML = `<span class="day">${Math.ceil(second / 86400)}<span class="unit">天</span></span>`            } else {                // 小于一天则使用时分秒计时。                let h = nol(parseInt(second / 3600));                second %= 3600;                let m = nol(parseInt(second / 60));                second %= 60;                let s = nol(second);                document.querySelector('#newYear .newYear-time').innerHTML = `<span class="time">${h}:${m}:${s}</span></span>`;                // 计时                newYearTimer = setTimeout(time, 1000);            }        }    }    // 元宝飘落    jQuery(document).ready(function ($) {        $('#newYear').wpSuperSnow({            flakes: ['https://tuchuang.voooe.cn/images/2023/01/02/yb1.webp', 'https://tuchuang.voooe.cn/images/2023/01/02/yb2.webp', 'https://tuchuang.voooe.cn/images/2023/01/02/yb3.webp'],            totalFlakes: '100',            zIndex: '999999',            maxSize: '30',            maxDuration: '20',            useFlakeTrans: false        });    });}// Pjax适配：若没有开启Pjax这里直接是newYear()即可// 开了Pjax的用以下两句document.addEventListener('pjax:complete', newYear);document.addEventListener('DOMContentLoaded', newYear);]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/js/fps.js"/>
-      <url>/js/fps.js</url>
-      
-        <content type="html"><![CDATA[if (window.localStorage.getItem("fpson") == undefined || window.localStorage.getItem("fpson") == "1") {    var rAF = function () {        return (            window.requestAnimationFrame ||            window.webkitRequestAnimationFrame ||            function (callback) {                window.setTimeout(callback, 1000 / 60);            }        );    }();    var frame = 0;    var allFrameCount = 0;    var lastTime = Date.now();    var lastFameTime = Date.now();    var loop = function () {        var now = Date.now();        var fs = (now - lastFameTime);        var fps = Math.round(1000 / fs);        lastFameTime = now;        // 不置 0，在动画的开头及结尾记录此值的差值算出 FPS        allFrameCount++;        frame++;        if (now > 1000 + lastTime) {            var fps = Math.round((frame * 1000) / (now - lastTime));            if (fps <= 5) {                var kd = `<span style="color:#bd0000">卡成ppt🤢</span>`            } else if (fps <= 15) {                var kd = `<span style="color:red">电竞级帧率😖</span>`            } else if (fps <= 25) {                var kd = `<span style="color:orange">有点难受😨</span>`            } else if (fps < 35) {                var kd = `<span style="color:#9338e6">不太流畅🙄</span>`            } else if (fps <= 45) {                var kd = `<span style="color:#08b7e4">还不错哦😁</span>`            } else {                var kd = `<span style="color:#39c5bb">十分流畅🤣</span>`            }            document.getElementById("fps").innerHTML = `FPS:${fps} ${kd}`;            frame = 0;            lastTime = now;        };        rAF(loop);    }    loop();} else {    document.getElementById("fps").style = "display:none!important"}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/js/runtime.js"/>
-      <url>/js/runtime.js</url>
-      
-        <content type="html"><![CDATA[setInterval(() => {    let create_time = Math.round(new Date('2023-08-18 00:00:00').getTime() / 1000); //在此行修改建站时间    let timestamp = Math.round((new Date().getTime()) / 1000);    let second = timestamp - create_time;    let time = new Array(0, 0, 0, 0, 0);      var nol = function(h){      return h>9?h:'0'+h;    }    if (second >= 365 * 24 * 3600) {      time[0] = parseInt(second / (365 * 24 * 3600));      second %= 365 * 24 * 3600;    }    if (second >= 24 * 3600) {      time[1] = parseInt(second / (24 * 3600));      second %= 24 * 3600;    }    if (second >= 3600) {      time[2] = nol(parseInt(second / 3600));      second %= 3600;    }    if (second >= 60) {      time[3] = nol(parseInt(second / 60));      second %= 60;    }    if (second > 0) {      time[4] = nol(second);    }    if ((Number(time[2])<22) && (Number(time[2])>7)){      currentTimeHtml ="<img class='boardsign' src='https://img.shields.io/badge/糖果屋-营业中-6adea8?style=social&logo=cakephp' title='距离百年老店也就差不到一百年~'><div id='runtime'>" + time[0] + ' YEAR ' + time[1] + ' DAYS ' + time[2] + ' : ' + time[3] + ' : ' + time[4] + '</div>';    }    else{      currentTimeHtml ="<img class='boardsign' src='https://img.shields.io/badge/糖果屋-打烊了-6adea8?style=social&logo=coffeescript' title='这个点了应该去睡觉啦，熬夜对身体不好哦'><div id='runtime'>" + time[0] + ' YEAR ' + time[1] + ' DAYS ' + time[2] + ' : ' + time[3] + ' : ' + time[4] + '</div>';    }    document.getElementById("workboard").innerHTML = currentTimeHtml;  }, 1000);]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
       <link href="/js/readPercent.js"/>
       <url>/js/readPercent.js</url>
       
@@ -182,10 +160,32 @@
     
     <entry>
       <title></title>
+      <link href="/js/newYear.js"/>
+      <url>/js/newYear.js</url>
+      
+        <content type="html"><![CDATA[let newYearTimer = null;var newYear = () => {    clearTimeout(newYearTimer);    if (!document.querySelector('#newYear')) return;    // 新年时间戳 and 星期对象    let newYear = new Date('2024-01-22 00:00:00').getTime() / 1000,        week = { 0: '周日', 1: '周一', 2: '周二', 3: '周三', 4: '周四', 5: '周五', 6: '周六' }    time();    // 补零函数    function nol(h) { return h > 9 ? h : '0' + h; };    function time() {        // 现在 时间对象        let now = new Date();        // 右下角 今天        document.querySelector('#newYear .today').innerHTML = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate() + ' ' + week[now.getDay()]        // 现在与新年相差秒数        let second = newYear - Math.round(now.getTime() / 1000);        // 小于0则表示已经过年        if (second < 0) {            document.querySelector('#newYear .title').innerHTML = 'Happy New Year!';            document.querySelector('#newYear .newYear-time').innerHTML = '<span class="happyNewYear">新年快乐</p>';        } else {            // 大于0则还未过年            document.querySelector('#newYear .title').innerHTML = '距离2023年春节：'            // 大于一天则直接渲染天数            if (second > 86400) {                document.querySelector('#newYear .newYear-time').innerHTML = `<span class="day">${Math.ceil(second / 86400)}<span class="unit">天</span></span>`            } else {                // 小于一天则使用时分秒计时。                let h = nol(parseInt(second / 3600));                second %= 3600;                let m = nol(parseInt(second / 60));                second %= 60;                let s = nol(second);                document.querySelector('#newYear .newYear-time').innerHTML = `<span class="time">${h}:${m}:${s}</span></span>`;                // 计时                newYearTimer = setTimeout(time, 1000);            }        }    }    // 元宝飘落    jQuery(document).ready(function ($) {        $('#newYear').wpSuperSnow({            flakes: ['https://tuchuang.voooe.cn/images/2023/01/02/yb1.webp', 'https://tuchuang.voooe.cn/images/2023/01/02/yb2.webp', 'https://tuchuang.voooe.cn/images/2023/01/02/yb3.webp'],            totalFlakes: '100',            zIndex: '999999',            maxSize: '30',            maxDuration: '20',            useFlakeTrans: false        });    });}// Pjax适配：若没有开启Pjax这里直接是newYear()即可// 开了Pjax的用以下两句document.addEventListener('pjax:complete', newYear);document.addEventListener('DOMContentLoaded', newYear);]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
       <link href="/js/snow.js"/>
       <url>/js/snow.js</url>
       
         <content type="html"><![CDATA[if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {    // 移动端不显示} else {    // document.write('<canvas id="snow" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:-2;pointer-events:none"></canvas>');    window && (() => {        let e = {            flakeCount: 50, // 雪花数目            minDist: 150,   // 最小距离            color: "255, 255, 255", // 雪花颜色            size: 1.5,  // 雪花大小            speed: .5,  // 雪花速度            opacity: .7,    // 雪花透明度            stepsize: .5    // 步距        };        const t = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function (e) {            window.setTimeout(e, 1e3 / 60)        }            ;        window.requestAnimationFrame = t;        const i = document.getElementById("snow"),            n = i.getContext("2d"),            o = e.flakeCount;        let a = -100,            d = -100,            s = [];        i.width = window.innerWidth,            i.height = window.innerHeight;        const h = () => {            n.clearRect(0, 0, i.width, i.height);            const r = e.minDist;            for (let t = 0; t < o; t++) {                let o = s[t];                const h = a,                    w = d,                    m = o.x,                    c = o.y,                    p = Math.sqrt((h - m) * (h - m) + (w - c) * (w - c));                if (p < r) {                    const e = (h - m) / p,                        t = (w - c) / p,                        i = r / (p * p) / 2;                    o.velX -= i * e,                        o.velY -= i * t                } else                    o.velX *= .98,                        o.velY < o.speed && o.speed - o.velY > .01 && (o.velY += .01 * (o.speed - o.velY)),                        o.velX += Math.cos(o.step += .05) * o.stepSize;                n.fillStyle = "rgba(" + e.color + ", " + o.opacity + ")",                    o.y += o.velY,                    o.x += o.velX,                    (o.y >= i.height || o.y <= 0) && l(o),                    (o.x >= i.width || o.x <= 0) && l(o),                    n.beginPath(),                    n.arc(o.x, o.y, o.size, 0, 2 * Math.PI),                    n.fill()            }            t(h)        }            , l = e => {                e.x = Math.floor(Math.random() * i.width),                    e.y = 0,                    e.size = 3 * Math.random() + 2,                    e.speed = 1 * Math.random() + .5,                    e.velY = e.speed,                    e.velX = 0,                    e.opacity = .5 * Math.random() + .3            }            ;        document.addEventListener("mousemove", (e => {            a = e.clientX,                d = e.clientY        }        )),            window.addEventListener("resize", (() => {                i.width = window.innerWidth,                    i.height = window.innerHeight            }            )),            (() => {                for (let t = 0; t < o; t++) {                    const t = Math.floor(Math.random() * i.width)                        , n = Math.floor(Math.random() * i.height)                        , o = 3 * Math.random() + e.size                        , a = 1 * Math.random() + e.speed                        , d = .5 * Math.random() + e.opacity;                    s.push({                        speed: a,                        velX: 0,                        velY: a,                        x: t,                        y: n,                        size: o,                        stepSize: Math.random() / 30 * e.stepsize,                        step: 0,                        angle: 180,                        opacity: d                    })                }                h()            }            )()    }    )();}]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/js/runtime.js"/>
+      <url>/js/runtime.js</url>
+      
+        <content type="html"><![CDATA[setInterval(() => {    let create_time = Math.round(new Date('2023-08-18 00:00:00').getTime() / 1000); //在此行修改建站时间    let timestamp = Math.round((new Date().getTime()) / 1000);    let second = timestamp - create_time;    let time = new Array(0, 0, 0, 0, 0);      var nol = function(h){      return h>9?h:'0'+h;    }    if (second >= 365 * 24 * 3600) {      time[0] = parseInt(second / (365 * 24 * 3600));      second %= 365 * 24 * 3600;    }    if (second >= 24 * 3600) {      time[1] = parseInt(second / (24 * 3600));      second %= 24 * 3600;    }    if (second >= 3600) {      time[2] = nol(parseInt(second / 3600));      second %= 3600;    }    if (second >= 60) {      time[3] = nol(parseInt(second / 60));      second %= 60;    }    if (second > 0) {      time[4] = nol(second);    }    if ((Number(time[2])<22) && (Number(time[2])>7)){      currentTimeHtml ="<img class='boardsign' src='https://img.shields.io/badge/糖果屋-营业中-6adea8?style=social&logo=cakephp' title='距离百年老店也就差不到一百年~'><div id='runtime'>" + time[0] + ' YEAR ' + time[1] + ' DAYS ' + time[2] + ' : ' + time[3] + ' : ' + time[4] + '</div>';    }    else{      currentTimeHtml ="<img class='boardsign' src='https://img.shields.io/badge/糖果屋-打烊了-6adea8?style=social&logo=coffeescript' title='这个点了应该去睡觉啦，熬夜对身体不好哦'><div id='runtime'>" + time[0] + ' YEAR ' + time[1] + ' DAYS ' + time[2] + ' : ' + time[3] + ' : ' + time[4] + '</div>';    }    document.getElementById("workboard").innerHTML = currentTimeHtml;  }, 1000);]]></content>
       
     </entry>
     
@@ -214,6 +214,17 @@
     
     
     <entry>
+      <title>音乐</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>友链</title>
       <link href="/link/index.html"/>
       <url>/link/index.html</url>
@@ -228,17 +239,6 @@
       <title>电影</title>
       <link href="/movie/index.html"/>
       <url>/movie/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>音乐</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
